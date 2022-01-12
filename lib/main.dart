@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_api/services/bored_service.dart';
-import 'package:flutter_bloc_api/services/connectivity_service.dart';
+import 'package:flutter_bloc_api/src/commons/repositories/repository.dart';
+import 'package:flutter_bloc_api/src/commons/utils/connectivity_check.dart';
 
-import 'home/home.dart';
+import 'src/features/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,21 +15,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-
-          primarySwatch: Colors.blue,
-        ),
-        home: MultiRepositoryProvider(
-          providers: [
-            RepositoryProvider(
-              create: (context) => BoredService(),
-            ),
-            RepositoryProvider(
-              create: (context) => ConnectivityService(),
-            )
-          ],
-          child: const HomePage(),
-        ));
+      theme: ThemeData(
+      ),
+      home: MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider(
+            create: (context) => RepositoryImp(),
+          ),
+          RepositoryProvider(
+            create: (context) => ConnectivityCheck(),
+          )
+        ],
+        child: const HomePage(),
+      ),
+    );
   }
 }

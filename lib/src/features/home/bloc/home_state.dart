@@ -19,7 +19,20 @@ class HomeLoadedState extends HomeState {
   List<Object?> get props => [activityName, activityType, participants];
 }
 
+
+
 class HomeNoInternetState extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
+
+
+
+class HomeErrorState extends HomeState {
+  final String message;
+
+  const HomeErrorState({required this.message});
+
   @override
   List<Object?> get props => [];
 }

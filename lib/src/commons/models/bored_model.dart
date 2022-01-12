@@ -1,17 +1,11 @@
-// To parse this JSON data, do
-//
-//     final boredActivity = boredActivityFromJson(jsonString);
-
 import 'dart:convert';
+ 
+BoredModel boredActivityFromJson(String str) => BoredModel.fromJson(json.decode(str));
 
-import 'package:http/http.dart';
+String boredActivityToJson(BoredModel data) => json.encode(data.toJson());
 
-BoredActivity boredActivityFromJson(String str) => BoredActivity.fromJson(json.decode(str));
-
-String boredActivityToJson(BoredActivity data) => json.encode(data.toJson());
-
-class BoredActivity {
-  BoredActivity({
+class BoredModel {
+  BoredModel({
     required this.activity,
     required this.type,
     required this.participants,
@@ -29,7 +23,7 @@ class BoredActivity {
   String key;
   double accessibility;
 
-  factory BoredActivity.fromJson(Map<String, dynamic> json) => BoredActivity(
+  factory BoredModel.fromJson(Map<String, dynamic> json) => BoredModel(
         activity: json["activity"],
         type: json["type"],
         participants: json["participants"],
@@ -48,12 +42,4 @@ class BoredActivity {
         "key": key,
         "accessibility": accessibility,
       };
-}
-
-class BoredService {
-  Future<BoredActivity> getBoredActivity() async {
-    final response = await get(Uri.parse('https://www.boredapi.com/api/activity'));
-    final activity = boredActivityFromJson(response.body);
-    return activity;
-  }
 }
