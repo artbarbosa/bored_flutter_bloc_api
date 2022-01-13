@@ -14,7 +14,7 @@ class CustomButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: const Text("Let's find you something to do"),
+      child:  const Text("Let's find you something to do", style: TextStyle(color: Colors.white),),
       onPressed: () => BlocProvider.of<HomeBloc>(context).add(LoadApiEvent()),
       style: ElevatedButton.styleFrom(
         elevation: 6,
@@ -23,7 +23,7 @@ class CustomButtonWidget extends StatelessWidget {
           style: BorderStyle.none,
         ),
         shadowColor: AppColor.shadowColorGrey,
-        fixedSize: Size(currentWidth * 0.5, currentWidth * 0.1),
+        fixedSize: Size(currentWidth * 0.65, currentWidth * 0.15),
         primary: AppColor.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(35),

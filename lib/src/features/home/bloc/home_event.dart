@@ -13,3 +13,8 @@ class NoInternetEvent extends HomeEvent {
   @override
   List<Object?> get props => [];
 }
+
+class LoadThemeMode extends HomeEvent {
+  @override
+  List<Object?> get props => [];
+}

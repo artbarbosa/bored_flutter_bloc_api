@@ -11,7 +11,7 @@ class CustomTextLogoWidget extends StatelessWidget {
       style: TextStyle(
           fontWeight: FontWeight.w600,
           color: AppColor.primaryColor,
-          fontSize: 60,
+          fontSize: 65,
           fontStyle: FontStyle.italic,
           shadows: [
             BoxShadow(
@@ -21,7 +21,7 @@ class CustomTextLogoWidget extends StatelessWidget {
               spreadRadius: 1,
             ),
             const BoxShadow(
-              color: AppColor.shadowColorWhite,
+              color: AppColor.shadowColorWhiteLogo,
               offset: Offset(-3, -3),
               blurRadius: 5,
               spreadRadius: 1,

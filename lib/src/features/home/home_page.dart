@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_api/src/commons/consts/app_color.dart';
 import 'package:flutter_bloc_api/src/commons/repositories/repository.dart';
@@ -13,6 +14,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentHeight = MediaQuery.of(context).size.height;
+    final currentWidth = MediaQuery.of(context).size.width;
     return BlocProvider(
         create: (context) => HomeBloc(
               RepositoryProvider.of<RepositoryImp>(context),
@@ -22,16 +25,16 @@ class HomePage extends StatelessWidget {
           backgroundColor: AppColor.backgroundColor,
           body: Center(
             child: Padding(
-              padding: const EdgeInsets.all(40.0),
+              padding: const EdgeInsets.only(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Padding(
-                      padding: EdgeInsets.only(bottom: 40),
-                      child: CustomTextLogoWidget()),
-                      HomeContainerComponent(),
+                children: [
+                  SizedBox(height: currentHeight * 0.08),
+                  const CustomTextLogoWidget(),
+                  SizedBox(height: currentHeight * 0.03),
+                  HomeContainerComponent(
+                      currentHeight: currentHeight, currentWidth: currentWidth)
                 ],
-                
               ),
             ),
           ),

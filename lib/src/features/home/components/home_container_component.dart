@@ -3,18 +3,20 @@ import 'package:flutter_bloc_api/src/commons/consts/app_color.dart';
 import 'package:flutter_bloc_api/src/features/home/components/card_home_component.dart';
 
 class HomeContainerComponent extends StatelessWidget {
-  const HomeContainerComponent({Key? key}) : super(key: key);
+  const HomeContainerComponent(
+      {Key? key, required this.currentHeight, required this.currentWidth})
+      : super(key: key);
+  final double currentHeight;
+  final double currentWidth;
 
   @override
   Widget build(BuildContext context) {
-    final currentHeight = MediaQuery.of(context).size.height;
-    final currentWidth = MediaQuery.of(context).size.width;
     return Container(
       height: currentHeight * 0.6,
-      width: currentWidth * 0.7,
+      width: currentWidth * 0.86,
       child: CardHomeComponent(
           currentHeight: currentHeight, currentWidth: currentWidth),
-      padding: const EdgeInsets.all(50),
+      padding: const EdgeInsets.only(top: 50),
       decoration: BoxDecoration(
           color: AppColor.backgroundColor,
           borderRadius: BorderRadius.circular(16),
